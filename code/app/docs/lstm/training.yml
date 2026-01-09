@@ -1,0 +1,38 @@
+Realizar treinamento de um modelo 
+---
+tags:
+  - lstm
+requestBody:
+  description: Dados de produção
+  required: true
+  content:
+    application/json:
+      schema:
+        $ref: '#/components/schemas/DataTraining'
+security:
+  - BearerAuth: []
+responses:
+  200:
+    description: Agendamento do treinamento realizado com sucesso
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/JobResponse'
+        example:
+          status: 200
+          message: 'Agendamento do treinamento realizado com sucesso'
+  400:
+    description: Ocorreu um erro para iniciar o treinamento
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Message'
+        examples:
+          Default:
+            value:
+              status: 400
+              message: 'Ocorreu um erro para iniciar o treinamento'
+          Ano:
+            value:
+              status: 400
+              message: 'Ocorreu um erro para iniciar o treinamento.'

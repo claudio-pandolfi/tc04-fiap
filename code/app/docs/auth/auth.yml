@@ -1,0 +1,42 @@
+Gerar chave de acesso
+---
+tags:
+  - auth
+parameters:
+  - name: username
+    in: query
+    type: string
+    required: true
+  - name: password
+    in: query
+    type: string
+    required: true
+responses:
+  200:
+    description: Retorno do chave de acesso
+    content:
+      application/json:
+        schema:
+          items:
+            $ref: '#/components/schemas/Login'
+          example:
+            status: 200
+            access_token: '##### access_token #####'
+  401:
+    description: Usuário ou senha inválida
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Message'
+        example:
+          status: 401
+          message: 'Usuário ou senha inválida'
+  400:
+    description: Erro ao gerar a chave de acesso
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Message'
+        example:
+          status: 400
+          message: 'Erro ao gerar a chave de acesso'

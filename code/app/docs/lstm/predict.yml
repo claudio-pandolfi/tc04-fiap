@@ -1,0 +1,44 @@
+Listar registros sobre exportações
+---
+tags:
+  - lstm
+parameters:
+  - name: days
+    in: query
+    type: number
+    required: false
+    description: Quantidade de dias
+  - name: symbol
+    in: query
+    type: string
+    required: false
+    description: Código da ação
+security:
+  - BearerAuth: []
+responses:
+  200:
+    description: Retorno dos dados preditivos da ação
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/PredictInfos'
+  401:
+    description: Missing Authorization Header
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Message'
+        example:
+          status: 401
+          message: 'Usuário ou senha inválida'
+  404:
+    description: Modelo não encontrado
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Message'
+        example:
+            status: 404
+            message: 'Modelo não encontrado'

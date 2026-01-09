@@ -1,0 +1,53 @@
+Listar modelos treinados
+---
+tags:
+  - lstm
+parameters:
+  - name: symbol
+    in: query
+    type: string
+    required: false
+    description: Código da ação
+  - name: status
+    in: query
+    type: string
+    required: false
+    description: Status do progresso do treinamento
+security:
+  - BearerAuth: []
+responses:
+  200:
+    description: Retorno da lista dos modelos treinados
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/TrainedModel'
+  400:
+    description: Erro ao buscar os registros sobre modelos treinados
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Message'
+        example:
+            status: 400
+            message: 'Erro ao buscar os registros sobre modelos treinados'
+  401:
+    description: Missing Authorization Header
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Message'
+        example:
+          status: 401
+          message: 'Usuário ou senha inválida'
+  404:
+    description: Modelos treinados não encontrado
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Message'
+        example:
+            status: 404
+            message: 'Modelos treinados não encontrado'

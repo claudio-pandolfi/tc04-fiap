@@ -1,0 +1,41 @@
+services:
+  flask:
+    build:
+      dockerfile: python_3.12.2
+    ports:
+      - '5000:5000'
+    volumes:
+      - ./code:/code
+    environment:
+      FLASK_APP: main.py
+      REDIS_HOST: redis_tc4
+    depends_on:
+      - mongodb
+
+  trainer:
+    build:
+      dockerfile: python_trainer_3.12.2
+    volumes:
+      - ./code:/code
+    environment:
+      REDIS_HOST: redis_tc4
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo:8.0.9
+    ports:
+      - '27017:27017'
+    volumes:
+      - dbdata:/data/db
+    restart: always
+
+  redis_tc4:
+    image: redis:alpine
+    container_name: redis_tc4
+    volumes:
+      - redis-data:/data
+
+volumes:
+  dbdata:
+  redis-data:
