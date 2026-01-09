@@ -36,15 +36,17 @@ Existem as variáveis de ambiente que devem ser incluídas no arquivo `code/.env
 FLASK_DEBUG= # True|False
 FLASK_ENV= # development|production
 SECRET_KEY= # Chave da aplicacao
-SWAGGER_TITLE = 'Tech Challenge - FIAP V1'
 
 # Variaveis da documentacao
+SWAGGER_TITLE = 'Tech Challenge - FIAP V1'
 SWAGGER_UI_VERSION = 3
 API_VERSION = '0.0.1'
 API_DESCRIPTION = 'API de analisar os dados de vitivinicultura da Embrapa'
 
 # Variaveis dos bancos de dados
-MONGODB_HOST = # Host do banco de dados. Para o ambiente local utilizar 'mongodb://mongodb/database'
+MONGODB_HOST = # Host do banco de dados. Para o ambiente local utilizar 'mongodb'
+MONGODB_PORT = # Porta do banco de dados. Para o ambiente local utilizar 27017
+MONGODB_DATABASE = # Nome do banco de dados. Para o ambiente local utilizar 'database'
 REDIS_URL = # Host do redis. Para ambiente local utilizar 'redis://redis_tc4:6379/0'
 ```
 
